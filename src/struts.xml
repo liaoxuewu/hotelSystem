@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	
+	<package name="loginAction" namespace="/" extends="struts-default">
+    	<action name="loginAction" class="com.hotel.action.LoginAction" >
+    		<result name="ManagerLoginSuccess">/Manager.jsp</result>
+    		<result name="ReceptionistLoginSuccess">/Room.jsp</result>
+    		<result name="fail">/LoginFail.jsp</result>
+    	</action>
+    </package>
+    
+    <package name="roomAction" namespace="/" extends="struts-default">
+    	<action name="showAllRoomAction" class="com.hotel.action.ShowAllRoomAction">
+    		<result name="success">/Room.jsp</result>
+    	</action>
+    	<action name="showReserveRoomAction" class="com.hotel.action.ShowReserveRoomAction">
+    		<result name="success">/Room.jsp</result>
+    	</action>
+    	<action name="showCheckinRoomAction" class="com.hotel.action.ShowCheckinRoomAction">
+    		<result name="success">/Room.jsp</result>
+    	</action>
+    	<action name="showFreeRoomAction" class="com.hotel.action.ShowFreeRoomAction">
+    		<result name="success">/Room.jsp</result>
+    	</action>
+    	<action name="findRoomAction" class="com.hotel.action.HandleRoomAction" method="findRoom">
+    		<result name="success">/handleRoom.jsp</result>
+    		<result name="fail">/Room.jsp</result>
+    	</action>
+    	<action name="reserveRoomAction" class="com.hotel.action.HandleRoomAction" method="reserveRoom">
+    		<result name="success">/Room.jsp</result>
+    		<result name="fail">/handleRoom.jsp</result>
+    	</action>
+    	<action name="checkinRoomAction" class="com.hotel.action.HandleRoomAction" method="checkinRoom">
+    		<result name="success">/Room.jsp</result>
+    		<result name="fail">/handleRoom.jsp</result>
+    	</action>
+    	<action name="checkoutRoomAction" class="com.hotel.action.HandleRoomAction" method="checkoutRoom">
+    		<result name="success">/Room.jsp</result>
+    		<result name="fail">/handleRoom.jsp</result>
+    	</action>
+    </package>
+    
+    <package name="managerAction"  namespace="/" extends="struts-default">
+    	<action name="managerQueryRoomAction" class="com.hotel.action.ShowAllRoomAction">
+    		<result name="success">/queryRoom.jsp</result>
+    	</action>
+    	<action name="addRoomAction"  class="com.hotel.action.HandleRoomAction" method="addRoom" >
+    		<result name="success" type="chain">managerQueryRoomAction</result>
+    		<result name="fail">/addRoomFail.jsp</result>
+    	</action>
+    	<action name="managerFindRoomAction" class="com.hotel.action.HandleRoomAction" method="findRoom">
+    		<result name="success">/manageRoom.jsp</result>
+    		<result name="fail">/Room.jsp</result>
+    	</action>
+    	<action name="deleteRoomAction" class="com.hotel.action.HandleRoomAction" method="deleteRoom">
+    		<result name="success" type="chain">managerQueryRoomAction</result>
+    	</action>
+    	<action name="findandModifyRoomAction" class="com.hotel.action.HandleRoomAction" method="findRoom">
+    		<result name="success">/modifyRoom.jsp</result>
+    		<result name="fail" type="chain">managerQueryRoomAction</result>
+    	</action>
+    	<action name="saveModifyRoomAction" class="com.hotel.action.HandleRoomAction" method="saveModify">
+    		<result name="success" type="chain">managerQueryRoomAction</result>
+    	</action>
+    	<action name="managerQueryReserveorderAction" class="com.hotel.action.QueryOrderAction" method="queryOrderReserveorder">
+    		<result name="success">/queryReserveorder.jsp</result>
+    	</action>
+    	<!-- 改class -->
+    	
+    	<action name="managerQueryCheckinorderAction" class="com.hotel.action.ShowAllRoomAction">
+    		<result name="success">/queryRoom.jsp</result>
+    	</action>
+    	<action name="managerQueryHistoryorderAction" class="com.hotel.action.ShowAllRoomAction">
+    		<result name="success">/queryRoom.jsp</result>
+    	</action>
+    	<action name="managerQueryStaffAction" class="com.hotel.action.ShowAllRoomAction">
+    		<result name="success">/queryRoom.jsp</result>
+    	</action>
+    	<!-- gai result -->
+    	
+    </package>
+</struts>    
